@@ -1,0 +1,31 @@
+<% if @notice.count != 0%>
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">My Notices</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Subject</th>
+            <th>Posted On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @notice.each do |f|%>
+            <tr>
+              <td><%= f.id%></td>
+              <td><%= f.subject%></td>
+              <td><%= f.posted_on%></td>
+              <td><%= link_to "Show", "/notices/#{f.id}",class: "btn btn-primary "%></td>
+              <td> <%= link_to "", "/notices/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></td>
+              <td><%= link_to "", "/notices/#{f.id}" , method: "delete",class: "btn btn-primary glyphicon glyphicon-trash"%></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->  
+<% end%>

@@ -1,0 +1,34 @@
+Leave managment System
+
+== Features include :-
+
+  * Employee Leaves management.
+
+  * Employee Check in and Checkouts.
+
+  * Universal Notice Board.
+
+  * Admin module for managing Employee's and Employee details.
+
+== Requirements
+
+* Ruby version - 2.3.0
+
+* Rails version - 4.2.5.1
+
+* Database - sqlite3
+
+== Installation procedure
+
+* Open console and run the following commands.
+
+* <tt>bundle install</tt> to install all the gems required for leaves app
+
+* <tt>rake db:migrate</tt> to create required database tables.
+
+* <tt>rake db:seed</tt> to get sample data(as there is no sign_up option demo data is required).
+  You can delete unwanted data from admin module later.
+
+Please feel free to contact if you find any bugs in application.
+
+Thank You!

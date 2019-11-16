@@ -1,0 +1,37 @@
+
+
+Started GET "/leaves" for ::1 at 2019-11-16 16:38:00 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LeavesController#index as HTML
+Completed 401 Unauthorized in 34ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-11-16 16:38:00 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/sign_in (34.4ms)
+Completed 200 OK in 396ms (Views: 379.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-11-16 16:38:52 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CRhft2J4jtbHWqKs401ye+uaHFayI68MLWxi5bR6wzSUdj1v7QHdOYZo0aTEwr/uIwk5aKT053c1mo4wfZp4PA==", "user"=>{"email"=>"madhu@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "madhu@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-03-07 18:36:56.000000"], ["current_sign_in_at", "2019-11-16 11:08:52.269499"], ["current_sign_in_ip", "::1"], ["sign_in_count", 4], ["updated_at", "2019-11-16 11:08:52.271793"], ["id", 4]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/leaves
+Completed 302 Found in 119ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/leaves" for ::1 at 2019-11-16 16:38:52 +0530
+Processing by LeavesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "leaves" WHERE "leaves"."user_id" = ? AND "leaves"."status" = ?  [["user_id", 4], ["status", "accepted"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "leaves" WHERE "leaves"."user_id" = ? AND "leaves"."status" = ?[0m  [["user_id", 4], ["status", "rejected"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "leaves" WHERE "leaves"."user_id" = ? AND "leaves"."status" = ?  [["user_id", 4], ["status", "accepted"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "leaves" WHERE "leaves"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mLeave Load (0.2ms)[0m  SELECT "leaves".* FROM "leaves" WHERE "leaves"."user_id" = ?  [["user_id", 4]]
+  Rendered leaves/index.html.erb within layouts/application (64.0ms)
+  [1m[36mCheckin Load (0.2ms)[0m  [1mSELECT  "checkins".* FROM "checkins" WHERE "checkins"."user_id" = ? AND "checkins"."date" = ?  ORDER BY "checkins"."id" DESC LIMIT 1[0m  [["user_id", 4], ["date", "2019-11-16"]]
+Completed 200 OK in 142ms (Views: 128.6ms | ActiveRecord: 2.4ms)

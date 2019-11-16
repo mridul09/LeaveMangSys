@@ -1,0 +1,23 @@
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Notice</h3>
+  </div><!-- /.box-header -->
+  <div class="container-fluid" >
+    <%= form_for(@notice) do |l|%>
+      <label for="subject",,class= "col-sm-2 control-label">Subject: </label>
+        <%= l.text_field :subject, :id => "subject", class: "form-control", placeholder: "Subject"%>
+      <span>
+        <%= @notice.errors.messages[:subject].first%>
+      </span></br></br>
+      <label for="content">Content: </label>
+       <%= l.text_area :content, :id => "content", class: "form-control", placeholder: "Content"%>
+      <span>
+        <%= @notice.errors.messages[:content].first%>
+      </span></br></br></br>
+      <div class="box-footer">
+        <%= l.submit "Submit", onclick: "return to_check()", class: "btn btn-primary pull-right"%>
+      </div><!-- /.box-footer -->
+    <% end%>
+  </div>
+</div>
++
